@@ -1,69 +1,75 @@
 @import "tailwindcss";
 
 @theme {
-  --color-dark: #0f0f11;
-  --color-card: rgba(25, 25, 28, 0.6);
-  --color-neon-orange: #ff6b00;
-  --color-neon-cyan: #00f0ff;
-  --color-neon-yellow: #fbff00;
-  --color-neon-green: #00ff66;
+  --color-base: #0a0a0b;
+  --color-surface: #111114;
+  --color-card: #16161a;
+  --color-amber: #e8a020;
+  --color-green: #22c27a;
+  --color-red: #e24b4a;
+  
   --font-sans: "Inter", sans-serif;
+  --font-syne: "Syne", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
 }
 
 @layer base {
   body {
-    @apply bg-dark text-gray-100 font-sans antialiased min-h-screen selection:bg-neon-cyan/30;
+    @apply bg-base text-gray-200 font-sans antialiased min-h-screen selection:bg-amber/30 selection:text-amber;
   }
 }
 
 @layer components {
+  .scanline {
+    @apply fixed inset-0 pointer-events-none z-0;
+    background: linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(255, 255, 255, 0.02) 51%
+    );
+    background-size: 100% 4px;
+  }
+
+  .glass-nav {
+    @apply bg-base/80 backdrop-blur-md border-b border-white/5;
+  }
+
   .glass-card {
-    @apply bg-card backdrop-blur-md border border-white/10 rounded-2xl shadow-2xl relative overflow-hidden;
+    @apply bg-card backdrop-blur-md border border-white/5 rounded-2xl shadow-xl relative overflow-hidden transition-colors duration-300;
   }
-
-  .glass-card::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 transition-opacity duration-500 ease-in-out pointer-events-none;
-  }
-
-  .glass-card:hover::before {
-    @apply opacity-100;
+  
+  .glass-card:hover {
+    @apply border-white/10 bg-card/80;
   }
 }
 
-/* Animations for pulsing CTA */
-@keyframes pulse-neon {
-  0% {
-    box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.4);
-  }
-
-  70% {
-    box-shadow: 0 0 0 15px rgba(0, 255, 102, 0);
-  }
-
-  100% {
-    box-shadow: 0 0 0 0 rgba(0, 255, 102, 0);
-  }
+/* Animations */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-@keyframes pulse-neon-orange {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.4);
-  }
-
-  70% {
-    box-shadow: 0 0 0 15px rgba(255, 107, 0, 0);
-  }
-
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 107, 0, 0);
-  }
+.animate-ticker {
+  animation: ticker 40s linear infinite;
+  display: flex;
+  white-space: nowrap;
 }
 
-.animate-pulse-green {
-  animation: pulse-neon 2s infinite;
+@keyframes pulse-amber {
+  0% { box-shadow: 0 0 0 0 rgba(232, 160, 32, 0.4); }
+  70% { box-shadow: 0 0 0 15px rgba(232, 160, 32, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(232, 160, 32, 0); }
 }
 
-.animate-pulse-orange {
-  animation: pulse-neon-orange 2s infinite;
+.animate-pulse-amber {
+  animation: pulse-amber 2s infinite;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
