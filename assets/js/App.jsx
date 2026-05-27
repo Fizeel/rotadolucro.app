@@ -67,6 +67,7 @@ function App() {
         </p>
 
         <a
+          id="botao-compra-cakto"
           href={CHECKOUT_LINK}
           className="group relative inline-flex items-center justify-center w-full sm:w-auto px-8 py-5 bg-amber text-base font-bold text-lg rounded-xl transition-all hover:scale-[1.02] animate-pulse-amber shadow-[0_0_30px_rgba(232,160,32,0.3)]"
         >
@@ -294,6 +295,7 @@ function App() {
         </p>
 
         <a
+          id="botao-compra-cakto"
           href={CHECKOUT_LINK}
           className="group relative flex items-center justify-center w-full sm:w-auto gap-3 px-8 sm:px-12 py-6 bg-amber text-base font-bold text-xl sm:text-2xl rounded-xl transition-all hover:scale-[1.02] animate-pulse-amber shadow-[0_0_40px_rgba(232,160,32,0.3)]"
         >
