@@ -4,7 +4,7 @@ import {
   CheckCircle2, XCircle, ChevronRight, AlertCircle, Quote
 } from 'lucide-react';
 
-const CHECKOUT_LINK = "https://pay.cakto.com.br/mhc3rtf_902537";
+const CHECKOUT_LINK = "https://pay.kiwify.com.br/kCIuf9n";
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
