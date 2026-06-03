@@ -4,7 +4,7 @@ import {
   CheckCircle2, XCircle, ChevronRight, AlertCircle, Quote
 } from 'lucide-react';
 
-const CHECKOUT_LINK = "https://pay.kiwify.com.br/kCIuf9n";
+const CHECKOUT_LINK = "https://pay.hotmart.com/I106116667J?checkoutMode=10";
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
